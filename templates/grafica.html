@@ -1,0 +1,76 @@
+<div class="container pt-3">
+    <div class="row row-cols-1 row-cols-sm-2">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <canvas id="myChart2"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</div>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+        data: {
+            labels: [
+                0,
+                {% for v in ventas %}
+                    "# Prod. {{ v.1 }}",
+                {% endfor %}
+            ],
+            datasets: [{
+                label: 'Monto generado $',
+                borderColor: 'rgb(255, 99, 132)',
+                fill: false,
+                data: [
+                    0,
+                    {% for v in ventas %}
+                        "{{ v.0 }}",
+                    {% endfor %}
+                ]
+            }]   
+        },
+
+        options: {}
+        
+    });
+
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx2, {
+    // The type of chart we want to create
+    type: 'line',
+        data: {
+            labels: [
+                0,
+                {% for t in total %}
+                    "# Ventas {{ t.0 }}",
+                {% endfor %}
+            ],
+            datasets: [{
+                label: 'Ventas Totales',
+                borderColor: 'rgb(255, 99, 132)',
+                fill: false,
+                data: [
+                    0,
+                    {% for t in total %}
+                        "{{ t.0 }}",
+                    {% endfor %}
+                ]
+            }]   
+        },
+
+        options: {}
+        
+    });
+</script>
