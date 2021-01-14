@@ -20,31 +20,20 @@ mysql = MySQL(app)
 #ENRUTAMIENTO
 @app.route('/', methods = ['POST', 'GET'])
 def Login():
-    if request.method == "GET":
-        if 'usuario' in session:
-            return redirect(url_for('Index'))
-        else:
-            return render_template('login.html')
+    usuario = request.form['usuario']
+    password = request.form['password']
 
-    elif request.method == "POST":
-        try:
-            usuario = request.form['usuario']
-            password = request.form['password']
-
-            cur = mysql.connection.cursor()
-            cur.execute(F"CALL sp_login(\"{usuario}\",\"{password}\")")
-            data = cur.fetchall()
-            cur.close()
-            if len(data) == 1 :
-                session['usuario'] = usuario
-                session['id_usuario'] = data[0][0]
-                return redirect(url_for('Index'))
-            else:
-                flash("Datos incorrectos")
-                return redirect(url_for('Login'))
-        except:
-            flash("Error")
-            return redirect(url_for('Login'))
+    cur = mysql.connection.cursor()
+    cur.execute(F"CALL sp_login(\"{usuario}\",\"{password}\")")
+    data = cur.fetchall()
+    cur.close()
+    if len(data) == 1 :
+        session['usuario'] = usuario
+        session['id_usuario'] = data[0][0]
+        return redirect(url_for('Index'))
+    else:
+        flash("Datos incorrectos")
+        return redirect(url_for('Login'))
 
 
 @app.route('/logout', methods = ['POST'])
