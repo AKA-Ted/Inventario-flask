@@ -13,7 +13,7 @@ app.config['MYSQL_HOST'] = 'us-cdbr-east-03.cleardb.com'
 app.config['MYSQL_USER'] = 'bef79789702297'
 app.config['MYSQL_PASSWORD'] = '1e78f586'
 app.config['MYSQL_DB'] = 'heroku_a718be810d404c7'
-app.config['OPTIONS'] = {'ssl_mode': 'DISABLED'}
+app.config['OPTIONS'] = {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},}
 
 
 mysql = MySQL(app)
