@@ -13,9 +13,10 @@ app.config['MYSQL_HOST'] = 'us-cdbr-east-03.cleardb.com'
 app.config['MYSQL_USER'] = 'bef79789702297'
 app.config['MYSQL_PASSWORD'] = '1e78f586'
 app.config['MYSQL_DB'] = 'heroku_a718be810d404c7'
-app.config['MYSQL_OPT_SSL_MODE '] = 'SSL_MODE_DISABLED'
-
-
+app.config['MYSQL_OPT_SSL_CA'] = '/certificate/cleardb-ca.pem'
+app.config['MYSQL_OPT_SSL_CERT'] = '/certificate/bef79789702297-cert.pem'
+app.config['MYSQL_OPT_SSL_KEY'] = '/certificate/bef79789702297-key.pem'
+ 
 mysql = MySQL(app)
 
 #ENRUTAMIENTO
