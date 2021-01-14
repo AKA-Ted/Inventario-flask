@@ -28,7 +28,7 @@ def Login():
             return render_template('login.html')
 
     elif request.method == "POST":
-        try:
+        #try:
             usuario = request.form['usuario']
             password = request.form['password']
 
@@ -43,9 +43,9 @@ def Login():
             else:
                 flash("Datos incorrectos")
                 return redirect(url_for('Login'))
-        except:
-            flash("Error")
-            return redirect(url_for('Login')) 
+        # except:
+        #     flash("Error")
+        #     return redirect(url_for('Login')) 
             
 @app.route('/logout', methods = ['POST'])
 def Logout():
