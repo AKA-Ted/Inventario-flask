@@ -9,10 +9,10 @@ app.config.from_object(__name__)
 app.secret_key = "flash message"
 
 #CONFIGURACIONES DE MYSQL
-app.config['MYSQL_HOST'] = 'us-cdbr-east-03.cleardb.com'
-app.config['MYSQL_USER'] = 'bef79789702297'
-app.config['MYSQL_PASSWORD'] = '1e78f586'
-app.config['MYSQL_DB'] = 'heroku_a718be810d404c7'
+app.config['MYSQL_HOST'] = 'hwr4wkxs079mtb19.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
+app.config['MYSQL_USER'] = 'ih47g6mnq1xej1xy'
+app.config['MYSQL_PASSWORD'] = 'csd5m1sgfdls7jyp'
+app.config['MYSQL_DB'] = 'uufbi8xtntn1q3ca'
  
 mysql = MySQL(app)
 
