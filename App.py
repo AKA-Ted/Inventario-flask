@@ -182,6 +182,6 @@ def venta():
         return redirect(url_for('Index'))
 
 
-
+#MODO DEBUG ACTIVADO
 if __name__ == "__main__":
     app.run(debug = True)
