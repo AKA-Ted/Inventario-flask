@@ -1,18 +1,21 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_mysqldb import MySQL
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = Flask(__name__)
 
-app.secret_key = b'"\xedP\'\x13\xe6\xad\x84t\x10\xafi0l\xee\x83'
+app.secret_key = os.getenv("SECRET_KEY")
 app.config.from_object(__name__)
 
 app.secret_key = "flash message"
 
 #CONFIGURACIONES DE MYSQL
-app.config['MYSQL_HOST'] = 'hwr4wkxs079mtb19.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
-app.config['MYSQL_USER'] = 'ih47g6mnq1xej1xy'
-app.config['MYSQL_PASSWORD'] = 'csd5m1sgfdls7jyp'
-app.config['MYSQL_DB'] = 'uufbi8xtntn1q3ca'
+app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
+app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
+app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
+app.config['MYSQL_DB'] = os.getenv("MYSQL_DB")
  
 mysql = MySQL(app)
 
